@@ -34,6 +34,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.example.leanbackplayground.movielist.MovieListViewActivity
 
 /**
  * Loads a grid of cards with movies to browse.
@@ -152,7 +153,7 @@ class MainFragment : BrowseSupportFragment() {
                     val intent = Intent(activity!!, BrowseErrorActivity::class.java)
                     startActivity(intent)
                 } else if (item.contains(getString(R.string.grid_view))) {
-                    startActivity(Intent(activity, GridViewActivity::class.java))
+                    startActivity(Intent(activity, MovieListViewActivity::class.java))
                 } else {
                     Toast.makeText(activity!!, item, Toast.LENGTH_SHORT).show()
                 }

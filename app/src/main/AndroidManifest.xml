@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeanbackPlayground">
         <activity
-            android:name=".GridViewActivity"
+            android:name=".movielist.MovieListViewActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
