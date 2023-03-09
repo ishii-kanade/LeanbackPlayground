@@ -1,4 +1,4 @@
-package com.example.leanbackplayground.movielist
+package com.example.leanbackplayground.movielistrecyclerview
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.leanback.widget.VerticalGridView
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.leanbackplayground.R
 
 class MovieListViewFragment : Fragment() {
     private lateinit var viewModel: MovieListViewViewModel
-    private lateinit var verticalGridView: VerticalGridView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,8 +21,8 @@ class MovieListViewFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProvider(this)[MovieListViewViewModel::class.java]
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.movie_list, container, false)
-        verticalGridView = view.findViewById(R.id.vertical_grid_view)
+        val view = inflater.inflate(R.layout.recycler_movie_list, container, false)
+        recyclerView = view.findViewById(R.id.recycler_view)
 
         return view
     }
@@ -28,10 +30,10 @@ class MovieListViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val layoutManager = GridLayoutManager(requireContext(), 5)
-//        verticalGridView.layoutManager = layoutManager
+        val layoutManager = GridLayoutManager(requireContext(), 5)
+        recyclerView.layoutManager = layoutManager
         val adapter = MovieListAdapter(requireContext(), viewModel.createList())
-        verticalGridView.setNumColumns(7)
-        verticalGridView.adapter = adapter
+//        recyclerView.setNumColumns(7)
+        recyclerView.adapter = adapter
     }
 }

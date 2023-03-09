@@ -110,7 +110,8 @@ class MainFragment : BrowseSupportFragment() {
 
         val mGridPresenter = GridItemPresenter()
         val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
-        gridRowAdapter.add(resources.getString(R.string.grid_view))
+        gridRowAdapter.add(resources.getString(R.string.vertical_grid_view))
+        gridRowAdapter.add(resources.getString(R.string.recycler_view))
         gridRowAdapter.add(getString(R.string.error_fragment))
         gridRowAdapter.add(resources.getString(R.string.personal_settings))
         rowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
@@ -152,8 +153,15 @@ class MainFragment : BrowseSupportFragment() {
                 if (item.contains(getString(R.string.error_fragment))) {
                     val intent = Intent(activity!!, BrowseErrorActivity::class.java)
                     startActivity(intent)
-                } else if (item.contains(getString(R.string.grid_view))) {
+                } else if (item.contains(getString(R.string.vertical_grid_view))) {
                     startActivity(Intent(activity, MovieListViewActivity::class.java))
+                } else if (item.contains(getString(R.string.recycler_view))) {
+                    startActivity(
+                        Intent(
+                            activity,
+                            com.example.leanbackplayground.movielistrecyclerview.MovieListViewActivity::class.java
+                        )
+                    )
                 } else {
                     Toast.makeText(activity!!, item, Toast.LENGTH_SHORT).show()
                 }

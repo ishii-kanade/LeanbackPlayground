@@ -21,6 +21,9 @@
             android:name=".movielist.MovieListViewActivity"
             android:exported="false" />
         <activity
+            android:name=".movielistrecyclerview.MovieListViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:banner="@drawable/app_icon_your_company"
             android:exported="true"
