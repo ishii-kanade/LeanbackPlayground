@@ -30,7 +30,7 @@ class MovieListViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager = GridLayoutManager(requireContext(), 5)
+        val layoutManager = GridLayoutManager(requireContext(), 7)
         recyclerView.layoutManager = layoutManager
         val adapter = MovieListAdapter(requireContext(), viewModel.createList())
 //        recyclerView.setNumColumns(7)

@@ -5,16 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".movielist.MovieListViewFragment">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <androidx.leanback.widget.VerticalGridView
             android:id="@+id/vertical_grid_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
+    </FrameLayout>
 </ScrollView>

@@ -2,8 +2,8 @@
     <string name="app_name">LeanbackPlayground</string>
     <string name="browse_title">Videos by Your Company</string>
     <string name="related_movies">Related Videos</string>
-    <string name="vertical_grid_view">Vertical Grid View</string>
-    <string name="recycler_view">Recycler View</string>
+    <string name="vertical_grid_view">VerticalGridView in ScrollView</string>
+    <string name="recycler_view">RecyclerView in ScrollView</string>
     <string name="error_fragment">Error Fragment</string>
     <string name="personal_settings">Personal Settings</string>
     <string name="watch_trailer_1">Watch trailer</string>

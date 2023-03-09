@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    def leanback_version = "1.0.0"
+    def leanback_version = "1.2.0-alpha02"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.leanback:leanback:$leanback_version"
