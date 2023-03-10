@@ -35,6 +35,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.leanbackplayground.movielist.MovieListViewActivity
+import com.example.leanbackplayground.presenterselector.PresenterSelectorExampleActivity
 
 /**
  * Loads a grid of cards with movies to browse.
@@ -112,6 +113,7 @@ class MainFragment : BrowseSupportFragment() {
         val gridRowAdapter = ArrayObjectAdapter(mGridPresenter)
         gridRowAdapter.add(resources.getString(R.string.vertical_grid_view))
         gridRowAdapter.add(resources.getString(R.string.recycler_view))
+        gridRowAdapter.add(resources.getString(R.string.presenter_selector_example))
         gridRowAdapter.add(getString(R.string.error_fragment))
         gridRowAdapter.add(resources.getString(R.string.personal_settings))
         rowsAdapter.add(ListRow(gridHeader, gridRowAdapter))
@@ -162,6 +164,8 @@ class MainFragment : BrowseSupportFragment() {
                             com.example.leanbackplayground.movielistrecyclerview.MovieListViewActivity::class.java
                         )
                     )
+                } else if (item.contains(getString(R.string.presenter_selector_example))) {
+                    startActivity(Intent(activity, PresenterSelectorExampleActivity::class.java))
                 } else {
                     Toast.makeText(activity!!, item, Toast.LENGTH_SHORT).show()
                 }
