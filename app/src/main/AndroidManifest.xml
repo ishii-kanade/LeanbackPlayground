@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeanbackPlayground">
         <activity
-            android:name=".presenterselector.PresenterSelectorExampleActivity"
+            android:name=".presenterselector.VerticalGridSupportActivity"
             android:exported="false" />
         <activity
             android:name=".movielist.MovieListViewActivity"

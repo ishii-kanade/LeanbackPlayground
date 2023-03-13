@@ -35,7 +35,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.leanbackplayground.movielist.MovieListViewActivity
-import com.example.leanbackplayground.presenterselector.PresenterSelectorExampleActivity
+import com.example.leanbackplayground.presenterselector.VerticalGridSupportActivity
 
 /**
  * Loads a grid of cards with movies to browse.
@@ -165,7 +165,7 @@ class MainFragment : BrowseSupportFragment() {
                         )
                     )
                 } else if (item.contains(getString(R.string.presenter_selector_example))) {
-                    startActivity(Intent(activity, PresenterSelectorExampleActivity::class.java))
+                    startActivity(Intent(activity, VerticalGridSupportActivity::class.java))
                 } else {
                     Toast.makeText(activity!!, item, Toast.LENGTH_SHORT).show()
                 }
