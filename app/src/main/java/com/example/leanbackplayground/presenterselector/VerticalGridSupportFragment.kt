@@ -2,24 +2,21 @@ package com.example.leanbackplayground.presenterselector
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.leanback.app.VerticalGridSupportFragment
 import androidx.leanback.widget.ArrayObjectAdapter
+import androidx.leanback.widget.Presenter
+import androidx.leanback.widget.PresenterSelector
 import androidx.leanback.widget.VerticalGridPresenter
-import com.example.leanbackplayground.StringPresenter
+import com.example.leanbackplayground.*
 
 
 class VerticalGridSupportFragment : VerticalGridSupportFragment() {
-    private class Adapter(presenter: StringPresenter?) : ArrayObjectAdapter(presenter) {
-        fun callNotifyChanged() {
-            super.notifyChanged()
-        }
-    }
-
-    private var mAdapter: Adapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.i(TAG, "onCreate")
         super.onCreate(savedInstanceState)
-//        setBadgeDrawable(getActivity()?.getResources()?.getDrawable(R.drawable.btn_default))
         title = "Leanback Vertical Grid Demo"
         setupFragment()
         if (TEST_ENTRANCE_TRANSITION) {
@@ -28,23 +25,41 @@ class VerticalGridSupportFragment : VerticalGridSupportFragment() {
                 prepareEntranceTransition()
             }
         }
-        // simulates in a real world use case  data being loaded two seconds later
-        loadData()
+        loadRows()
         startEntranceTransition()
     }
 
-    private fun loadData() {
-        for (i in 0 until NUM_ITEMS) {
-            mAdapter?.add(Integer.toString(i))
+    private fun loadRows() {
+        val cardPresenter = CardPresenter()
+        val stringPresenter = StringPresenter()
+        val presenters: Array<Presenter> = arrayOf(cardPresenter, stringPresenter)
+        val presenterSelector = object : PresenterSelector() {
+            override fun getPresenter(item: Any?): Presenter {
+                if (item is Movie) {
+                    return cardPresenter
+                }
+                if (item is String) {
+                    return stringPresenter
+                }
+                throw IllegalArgumentException()
+            }
+
+            override fun getPresenters(): Array<Presenter> {
+                return presenters
+            }
         }
+        val listRowAdapter = ArrayObjectAdapter(presenterSelector)
+        listRowAdapter.add(MovieList.list[3])
+        listRowAdapter.add(MovieList.list[4])
+        listRowAdapter.add("dddsss")
+
+        adapter = listRowAdapter
     }
 
     private fun setupFragment() {
         val gridPresenter = VerticalGridPresenter()
         gridPresenter.numberOfColumns = NUM_COLUMNS
         setGridPresenter(gridPresenter)
-        mAdapter = Adapter(StringPresenter())
-        adapter = mAdapter
         setOnItemViewSelectedListener { itemViewHolder, item, rowViewHolder, row ->
             Log.i(
                 TAG,
